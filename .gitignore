@@ -21,4 +21,5 @@ run-tests.php
 *.o
 *.la
 *.lo
+md4c/
 

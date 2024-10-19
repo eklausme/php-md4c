@@ -1,0 +1,32 @@
+#!/bin/perl -W
+# Concatenate header and C source code files from MD4C into a single file ("amalgamation").
+# `git clone https://github.com/mity/md4c.git`, then go to directory .../md4c/src
+# Elmar Klausmeier, 15-Oct-2024
+
+use strict;
+
+sub readC(@) {
+	my ($f) = ($_[0]);
+
+	print A "// $f\n\n";
+	open(F,"<$f") || die("Cannot open $f");
+	while (<F>) {
+		next if (/#include "(entity|md4c|md4c-html)\.h"/);	# do not include
+		print A $_;
+	}
+	print A "\n\n";
+	close(F) || die("Cannot close $f");
+}
+
+
+open(A,">amalgamate.c") || die("Cannot open amalgamate.c for writing");
+print A "\n\n// Begin amalgamate\n\n";
+readC("entity.h");
+readC("md4c.h");
+readC("md4c-html.h");
+readC("entity.c");
+readC("md4c.c");
+readC("md4c-html.c");
+print A "\n\n// End amalgamate\n\n";
+close(A) || die("Cannot close amalgamate.c");
+
