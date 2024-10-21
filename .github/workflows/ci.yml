@@ -1,0 +1,38 @@
+name: Build and Test
+on: [push, pull_request]
+jobs:
+  windows:
+    defaults:
+      run:
+        shell: cmd
+    strategy:
+      matrix:
+          os: [windows-2022]
+          version: ['8.0', '8.1', '8.2', '8.3', '8.4']
+          arch: [x64]
+          ts: [nts]
+    runs-on: ${{matrix.os}}
+    steps:
+      - name: Checkout md4c
+        uses: actions/checkout@v4
+      - name: Setup PHP
+        id: setup-php
+        uses: php/setup-php-sdk@v0.10
+        with:
+          version: ${{matrix.version}}
+          arch: ${{matrix.arch}}
+          ts: ${{matrix.ts}}
+          cache: true
+      - name: Enable Developer Command Prompt
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: ${{matrix.arch}}
+          toolset: ${{steps.setup-php.outputs.toolset}}
+      - name: phpize
+        run: phpize
+      - name: configure
+        run: configure --enable-md4c --with-prefix=${{steps.setup-php.outputs.prefix}}
+      - name: make
+        run: nmake
+      - name: test
+        run: nmake test TESTS=tests
