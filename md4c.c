@@ -9997,7 +9997,7 @@ zend_module_entry md4c_module_entry = {
 
 
 
-#ifdef COMPILE_DL_TEST
+#ifdef COMPILE_DL_MD4C
 # ifdef ZTS
 ZEND_TSRMLS_CACHE_DEFINE()
 # endif
