@@ -1,2 +1,5 @@
-ARG_ENABLE('php-md4c', 'test support', 'no');
+ARG_ENABLE('md4c', 'Enable the md4c extension', 'no');
 
+if (PHP_MD4C != 'no') {
+    EXTENSION('md4c', 'md4c.c');
+}
