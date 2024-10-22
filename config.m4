@@ -1,8 +1,7 @@
 dnl config.m4 for php-md4c extension
 
-PHP_ARG_WITH(md4c, [whether to enable MD4C support],
-[  --with-md4c[[=DIR]]       Enable MD4C support.
-                          DIR is the path to MD4C install prefix])
+PHP_ARG_ENABLE(md4c, [whether to enable MD4C support],
+[  --enable-md4c           Enable MD4C support.])
 
 if test "$PHP_MD4C" != "no"; then
 	PHP_SUBST(MD4C_SHARED_LIBADD)
