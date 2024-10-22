@@ -9913,6 +9913,9 @@ PHP_MINIT_FUNCTION(md4c) {	// module initialization
 	//REGISTER_INI_ENTRIES();
 	//php_printf("In PHP_MINIT_FUNCTION(md4c): module initialization\n");
 
+	REGISTER_LONG_CONSTANT("MD4C_DIALECT_GITHUB", MD_DIALECT_GITHUB, CONST_PERSISTENT);
+	REGISTER_LONG_CONSTANT("MD4C_FLAG_NOINDENTEDCODEBLOCKS", MD_FLAG_NOINDENTEDCODEBLOCKS, CONST_PERSISTENT);
+
 	return SUCCESS;
 }
 /* }}} */
@@ -9981,7 +9984,7 @@ zend_module_entry md4c_module_entry = {
 	STANDARD_MODULE_HEADER,
 	"md4c",				// Extension name
 	php_md4c_functions,		// zend_function_entry
-	NULL,	//PHP_MINIT(md4c),		// PHP_MINIT - Module initialization
+	PHP_MINIT(md4c),		// PHP_MINIT - Module initialization
 	PHP_MSHUTDOWN(md4c),		// PHP_MSHUTDOWN - Module shutdown
 	NULL,				// PHP_RINIT - Request initialization
 	NULL,				// PHP_RSHUTDOWN - Request shutdown
