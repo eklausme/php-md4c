@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.0" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+http://pear.php.net/dtd/tasks-1.0.xsd
+http://pear.php.net/dtd/package-2.0
+http://pear.php.net/dtd/package-2.0.xsd">
+ <name>md4c</name>
+ <channel>pecl.php.net</channel>
+ <summary>Convert Markdown to HTML</summary>
+ <description>
+<![CDATA[
+]]>
+ </description>
+ <lead>
+  <name>Elmar Klausmeier</name>
+  <user>eklausmeier</user>
+  <email></email>
+  <active>yes</active>
+ </lead>
+  <date>2024-10-22</date>
+ <version>
+  <release>1.0.0dev</release>
+  <api>1.0.0dev</api>
+ </version>
+ <stability>
+  <release>devel</release>
+  <api>devel</api>
+ </stability>
+ <license uri="https://github.com/eklausme/php-md4c/blob/master/LICENSE">MIT</license>
+ <notes>
+<![CDATA[
+Initial release
+]]>
+ </notes>
+
+ <contents>
+  <dir name="/">
+   <file name="config.m4" role="src" />
+   <file name="config.w32" role="src" />
+   <file name="LICENSE" role="doc" />
+   <file name="md4c.c" role="src" />
+   <dir name="tests">
+    <file name="001.phpt" role="test" />
+   </dir> <!-- tests -->
+  </dir> <!-- / -->
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <providesextension>md4c</providesextension>
+ <extsrcrelease />
+   <changelog>
+  </changelog>
+</package>
