@@ -1,6 +1,27 @@
 name: Build and Test
 on: [push, pull_request]
 jobs:
+  ubuntu:
+    strategy:
+      matrix:
+          version: ['8.0', '8.1', '8.2', '8.3', '8.4']
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout md4c
+        uses: actions/checkout@v4
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{matrix.version}}
+          tools: phpize
+      - name: phpize
+        run: phpize
+      - name: configure
+        run: ./configure --enable-md4c
+      - name: make
+        run: make
+      - name: test
+        run: make test TESTS=tests
   windows:
     defaults:
       run:
