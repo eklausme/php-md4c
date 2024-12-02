@@ -19,14 +19,14 @@ This function uses the MD4C library written in C and is currently the fastest co
   <email>Elmar.Klausmeier@gmail.com</email>
   <active>yes</active>
  </lead>
-  <date>2024-10-22</date>
+  <date>2024-12-02</date>
  <version>
-  <release>1.0.0dev</release>
-  <api>1.0.0dev</api>
+  <release>1.1</release>
+  <api>1.1</api>
  </version>
  <stability>
-  <release>devel</release>
-  <api>devel</api>
+  <release>stable</release>
+  <api>stable</api>
  </stability>
  <license uri="https://github.com/eklausme/php-md4c/blob/master/LICENSE">MIT</license>
  <notes>
@@ -49,7 +49,7 @@ Initial release
  <dependencies>
   <required>
    <php>
-    <min>7.0.0</min>
+    <min>8.0.0</min>
    </php>
    <pearinstaller>
     <min>1.4.0b1</min>

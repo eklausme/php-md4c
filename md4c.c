@@ -9997,7 +9997,7 @@ zend_module_entry md4c_module_entry = {
 	NULL,				// PHP_RINIT - Request initialization
 	NULL,				// PHP_RSHUTDOWN - Request shutdown
 	PHP_MINFO(md4c),		// PHP_MINFO - Module info
-	"1.0",				// Version
+	"1.1",				// Version
 	PHP_MODULE_GLOBALS(md4c),
 	PHP_GINIT(md4c),
 	PHP_GSHUTDOWN(md4c),

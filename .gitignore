@@ -21,6 +21,7 @@ run-tests.php
 *.o
 *.la
 *.lo
+*.tgz
 *~
 md4c/
 tests/
