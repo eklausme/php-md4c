@@ -1,0 +1,13 @@
+{
+    "name": "pecl/md4c",
+    "type": "php-ext",
+    "license": "MIT",
+    "description": "Convert Markdown or CommonMark to HTML using MD4C",
+    "require": {
+        "php": ">= 8.0.0"
+    },
+    "php-ext": {
+        "extension-name": "md4c",
+        "configure-options": []
+    }
+}
