@@ -9875,7 +9875,7 @@ PHP_FUNCTION(md4c_toHtml) {	// return HTML string
 	char *markdown;
 	size_t markdown_len;
 	int ret;
-	long flag = MD_DIALECT_GITHUB | MD_FLAG_NOINDENTEDCODEBLOCKS;
+	zend_long flag = MD_DIALECT_GITHUB | MD_FLAG_NOINDENTEDCODEBLOCKS;
 
 	struct membuffer* buf = &( MD4C_GET(mbuf) );
 	if (buf == NULL)
