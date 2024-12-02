@@ -17,8 +17,11 @@
 #include <php.h>
 #include <ext/standard/info.h>
 
+#ifdef HAVE_LIBMD4C
 
+#include <md4c-html.h>
 
+#else
 // Begin amalgamate
 
 // entity.h
@@ -9805,6 +9808,7 @@ md_html(const MD_CHAR* input, MD_SIZE input_size,
 
 
 // End amalgamate
+#endif
 
 
 
@@ -9951,7 +9955,11 @@ PHP_MINFO_FUNCTION(md4c) {
 	php_info_print_table_start();
 	php_info_print_table_row(2, "MD4C", "enabled");
 	php_info_print_table_row(2, "PHP-MD4C version", "1.1");
-	php_info_print_table_row(2, "MD4C version", "0.5.2");
+#ifdef HAVE_LIBMD4C
+	php_info_print_table_row(2, "MD4C system library version", PHP_LIBMD4C_VERSION);
+#else
+	php_info_print_table_row(2, "MD4C bundled library version", "0.5.2");
+#endif
 	php_info_print_table_end();
 }
 /* }}} */
