@@ -43,6 +43,7 @@ Initial release
    <file name="md4c.c" role="src" />
    <dir name="tests">
     <file name="001.phpt" role="test" />
+    <file name="002.phpt" role="test" />
    </dir> <!-- tests -->
   </dir> <!-- / -->
  </contents>
