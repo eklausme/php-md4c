@@ -23,6 +23,5 @@ run-tests.php
 *.lo
 *.tgz
 *~
-md4c/
 tests/
 
