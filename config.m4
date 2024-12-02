@@ -17,8 +17,18 @@ if test "$PHP_MD4C" != "no"; then
 
 		LIBMD4C_VERSION=`$PKG_CONFIG md4c-html --modversion`
 		AC_DEFINE_UNQUOTED([PHP_LIBMD4C_VERSION], ["$LIBMD4C_VERSION"], [With system libmd4c library])
+
+		PHP_NEW_EXTENSION(md4c, md4c.c, $ext_shared)
+	else
+		LIBMD4C_SOURCES="$EXT_SOURCES \
+			libmd4c/src/entity.c \
+			libmd4c/src/md4c.c \
+			libmd4c/src/md4c-html.c \
+		"
+		PHP_NEW_EXTENSION(md4c, md4c.c $LIBMD4C_SOURCES, $ext_shared)
+		PHP_ADD_INCLUDE([$ext_srcdir/libmd4c/src])
+		PHP_ADD_BUILD_DIR([$ext_builddir/libmd4c/src])
 	fi
 	PHP_SUBST(MD4C_SHARED_LIBADD)
 	AC_DEFINE(HAVE_MD4C, 1, [ ])
-	PHP_NEW_EXTENSION(md4c, md4c.c, $ext_shared)
 fi
