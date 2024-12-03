@@ -5,10 +5,21 @@ jobs:
     strategy:
       matrix:
           version: ['8.0', '8.1', '8.2', '8.3', '8.4']
+          library:
+            - ''
+            - 'system'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout md4c
         uses: actions/checkout@v4
+      - name: Checkout submodules
+        run: |
+          git submodule update --init --recursive
+        if: ${{ ! matrix.library }}
+      - name: Install library
+        run: |
+          sudo apt-get install -y "automake" "libtool" "libmd4c-dev" "libmd4c-html0-dev"
+        if: ${{ matrix.library }}
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -16,8 +27,14 @@ jobs:
           tools: phpize
       - name: phpize
         run: phpize
-      - name: configure
-        run: ./configure --enable-md4c
+      - name: configure with bundled library
+        run: |
+          ./configure --enable-md4c
+        if: ${{ ! matrix.library }}
+      - name: configure with library
+        run: |
+          ./configure --enable-md4c --enable-system-libmd4c
+        if: ${{ matrix.library }}
       - name: make
         run: make
       - name: test
@@ -36,6 +53,8 @@ jobs:
     steps:
       - name: Checkout md4c
         uses: actions/checkout@v4
+      - name: Checkout submodules
+        run: git submodule update --init --recursive
       - name: Setup PHP
         id: setup-php
         uses: php/setup-php-sdk@v0.10
