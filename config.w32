@@ -2,4 +2,11 @@ ARG_ENABLE('md4c', 'Enable the md4c extension', 'no');
 
 if (PHP_MD4C != 'no') {
     EXTENSION('md4c', 'php_md4c.c');
+    ADD_SOURCES(configure_module_dirname + "/libmd4c/src", "\
+        entity.c \
+        md4c.c \
+        md4c-html.c",
+        "md4c"
+    );
+    CHECK_HEADER_ADD_INCLUDE("md4c-html.h", "CFLAGS_MD4C", "libmd4c/src/");
 }
