@@ -51,7 +51,7 @@ Initial release
    <file name="config.m4" role="src" />
    <file name="config.w32" role="src" />
    <file name="LICENSE" role="doc" />
-   <file name="md4c.c" role="src" />
+   <file name="php_md4c.c" role="src" />
    <dir name="tests">
     <file name="001.phpt" role="test" />
     <file name="002.phpt" role="test" />
